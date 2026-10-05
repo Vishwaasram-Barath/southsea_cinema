@@ -103,6 +103,25 @@ class _MovieListingState extends State<MovieListing> {
                 ),
               ],
             ),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  if (_ticketQuantity == 0) {
+                    _orderMessage = 'Choose at least one ticket.';
+                  } else {
+                    _orderMessage =
+                        '$_ticketQuantity ticket(s) added to your order';
+                  }
+                });
+              },
+              child: const Text('ADD TO ORDER'),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              _orderMessage,
+              style: const TextStyle(color: cinemaFontWhite),
+            ),
           ],
         ),
       ),
