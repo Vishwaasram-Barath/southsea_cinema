@@ -29,6 +29,11 @@ class _MovieListingState extends State<MovieListing> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: cinemaSurface,
+              ),
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -105,6 +110,9 @@ class _MovieListingState extends State<MovieListing> {
             ),
             const SizedBox(height: 24),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: cinemaBrand,
+                  foregroundColor: cinemaFontWhite),
               onPressed: () {
                 setState(() {
                   if (_ticketQuantity == 0) {
