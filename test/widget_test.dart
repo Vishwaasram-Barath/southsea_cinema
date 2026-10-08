@@ -1,9 +1,18 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/main.dart';
 
 void main() {
-  testWidgets('Basic app loading test', (WidgetTester tester) async {
+  testWidgets('Home page displays movies and booking buttons',
+      (WidgetTester tester) async {
     await tester.pumpWidget(const SouthseaCinemaApp());
-    expect(find.text('Welcome to Southsea Cinema'), findsOneWidget);
+    await tester.pumpAndSettle();
+
+    expect(find.text(appTitle), findsOneWidget);
+
+    expect(find.text('Dune Part II'), findsOneWidget);
+    expect(find.text('Interstellar'), findsOneWidget);
+
+    expect(find.text('Book'), findsNWidgets(2));
   });
 }
