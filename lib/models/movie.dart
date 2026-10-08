@@ -7,8 +7,8 @@ class Movie {
   final String imagePath;
   final double price;
 
-  const Movie({
-      required this.id,
+  const Movie(
+      {required this.id,
       required this.title,
       required this.ageRating,
       required this.synopsis,
@@ -17,6 +17,6 @@ class Movie {
       required this.price});
 
   String get formattedPrice => '£${price.toStringAsFixed(2)}';
-  bool get isChildFriendly => ageRating == 'U' || ageRating == 'PG-13';
+  bool get isChildFriendly => ageRating == 'U' || ageRating == 'PG';
   bool get isAdultOnly => ageRating == '18';
 }

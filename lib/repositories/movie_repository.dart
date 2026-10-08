@@ -6,7 +6,7 @@ class MovieRepository {
       Movie(
         id: '1',
         title: 'Dune Part II',
-        ageRating: 'PG-13',
+        ageRating: 'PG',
         synopsis:
             'Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.',
         screeningTime: 'Friday 9 OCT 18:00',
@@ -16,7 +16,7 @@ class MovieRepository {
       Movie(
         id: '2',
         title: 'Interstellar',
-        ageRating: 'PG-13',
+        ageRating: 'PG',
         synopsis:
             'When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.',
         screeningTime: 'Saturday 10 OCT 20:00',
