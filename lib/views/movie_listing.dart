@@ -43,7 +43,7 @@ class _MovieListingState extends State<MovieListing> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${widget.movie.title} (${widget.movie.ageRating})}',
+                    '${widget.movie.title} (${widget.movie.ageRating})',
                     style: TextStyle(
                       color: cinemaFontWhite,
                       fontSize: 28,
