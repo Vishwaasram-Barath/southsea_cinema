@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListing extends StatefulWidget {
-  const MovieListing({super.key});
+  final Movie movie;
+  const MovieListing({
+    super.key,
+    required this.movie,
+  });
 
   @override
   State<MovieListing> createState() => _MovieListingState();
@@ -34,11 +39,11 @@ class _MovieListingState extends State<MovieListing> {
               decoration: BoxDecoration(
                 color: cinemaSurface,
               ),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'DUNE PART II (2024) (PG-13)',
+                    '${widget.movie.title} (${widget.movie.ageRating})}',
                     style: TextStyle(
                       color: cinemaFontWhite,
                       fontSize: 28,
@@ -46,7 +51,7 @@ class _MovieListingState extends State<MovieListing> {
                   ),
                   SizedBox(height: 20),
                   Text(
-                    'Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.',
+                    widget.movie.synopsis,
                     style: TextStyle(color: cinemaFontWhite),
                   ),
                 ],
@@ -58,8 +63,8 @@ class _MovieListingState extends State<MovieListing> {
               style: TextStyle(color: cinemaFontWhite),
             ),
             const SizedBox(height: 12),
-            const Text(
-              'Thursday 22 Oct 2026, 18:00 - ends at 20:30',
+            Text(
+              widget.movie.screeningTime,
               style: TextStyle(color: cinemaFontWhite),
             ),
             const SizedBox(height: 32),
