@@ -3,10 +3,10 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
 
-class MovieCard extends StatelessWidget{
+class MovieCard extends StatelessWidget {
   final Movie movie;
 
-  const MovieCard ({
+  const MovieCard({
     super.key,
     required this.movie,
   });
@@ -64,8 +64,10 @@ class MovieCard extends StatelessWidget{
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MovieListing(movie: movie),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MovieListing(movie: movie),
                       ),
                     );
                   },
