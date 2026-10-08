@@ -107,8 +107,8 @@ class _MovieListingState extends State<MovieListing> {
                   ),
                 ),
                 const SizedBox(width: 12),
-                const Text(
-                  'Adult (£7.50)',
+                Text(
+                  widget.movie.formattedPrice,
                   style: TextStyle(color: cinemaFontWhite),
                 ),
               ],
