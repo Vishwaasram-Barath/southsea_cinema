@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/main.dart';
@@ -17,7 +18,8 @@ void main() {
     expect(find.text('Book'), findsNWidgets(2));
   });
 
-  testWidgets('Book button opens the selected movie listing', (WidgetTester tester) async {
+  testWidgets('Book button opens the selected movie listing',
+      (WidgetTester tester) async {
     await tester.pumpWidget(const SouthseaCinemaApp());
     await tester.pumpAndSettle();
 
@@ -32,9 +34,15 @@ void main() {
         findsOneWidget);
     expect(find.text('Friday 9 OCT 18:00'), findsOneWidget);
 
+    await tester.tap(find.byType(DropdownMenu<int>));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('1').last);
+    await tester.pumpAndSettle();
+
     await tester.tap(find.text('ADD TO ORDER'));
     await tester.pump();
 
-    expect(find.text('Choose at least one ticket.'), findsOneWidget);
+    expect(find.text('1 ticket(s) added to your order'), findsOneWidget);
   });
 }
