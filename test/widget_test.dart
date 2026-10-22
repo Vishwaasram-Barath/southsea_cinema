@@ -17,7 +17,7 @@ void main() {
     expect(find.text('Book'), findsNWidgets(2));
   });
 
-  testWidgets('', (WidgetTester tester) async {
+  testWidgets('Book button opens the selected movie listing', (WidgetTester tester) async {
     await tester.pumpWidget(const SouthseaCinemaApp());
     await tester.pumpAndSettle();
 
