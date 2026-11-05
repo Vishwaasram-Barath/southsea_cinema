@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/main.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
+import 'package:southsea_cinema/views/basket_view.dart';
+import 'package:southsea_cinema/views/settings_view.dart';
 
 void main() {
   testWidgets('Home page displays movies and booking buttons',
@@ -44,5 +46,33 @@ void main() {
     await tester.pump();
 
     expect(find.text('1 ticket(s) added to your order'), findsOneWidget);
+  });
+
+  testWidgets('Drawer My Basket opens the basket page',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const SouthseaCinemaApp());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('My Basket'));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(BasketView), findsOneWidget);
+  });
+
+  testWidgets('Drawer My Settings opens the settings page',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const SouthseaCinemaApp());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('My Settings'));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(SettingsView), findsOneWidget);
   });
 }
