@@ -3,6 +3,8 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
+import 'package:southsea_cinema/models/basket_item.dart';
+import 'package:southsea_cinema/repositories/basket_repository.dart';
 
 class MovieListing extends StatefulWidget {
   final Movie movie;
@@ -20,6 +22,21 @@ class _MovieListingState extends State<MovieListing> {
   String _orderMessage = '';
 
   @override
+  void _addToOrder() {
+    if (_ticketQuantity == 0) {
+      setState(() {
+        _orderMessage = 'Choose at least one ticket.';
+      });
+    } else {
+      BasketRepository.instance.addItem(
+        BasketItem(movie: widget.movie, quantity: _ticketQuantity),
+      );
+      setState(() {
+        _orderMessage = '$_ticketQuantity ticket(s) added to your order';
+      });
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -117,16 +134,7 @@ class _MovieListingState extends State<MovieListing> {
             const SizedBox(height: 24),
             PrimaryButton(
               label: 'ADD TO ORDER',
-              onPressed: () {
-                setState(() {
-                  if (_ticketQuantity == 0) {
-                    _orderMessage = 'Choose at least one ticket.';
-                  } else {
-                    _orderMessage =
-                        '$_ticketQuantity ticket(s) added to your order';
-                  }
-                });
-              },
+              onPressed: _addToOrder,
             ),
             const SizedBox(height: 12),
             Text(
