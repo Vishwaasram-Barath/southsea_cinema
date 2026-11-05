@@ -21,7 +21,6 @@ class _MovieListingState extends State<MovieListing> {
   int _ticketQuantity = 0;
   String _orderMessage = '';
 
-  @override
   void _addToOrder() {
     if (_ticketQuantity == 0) {
       setState(() {
