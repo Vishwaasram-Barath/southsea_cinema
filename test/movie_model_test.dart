@@ -86,5 +86,45 @@ void main() {
       expect(adultMovie.isAdultOnly, isTrue);
       expect(pgMovie.isAdultOnly, isFalse);
     });
+
+    test('fromJson and toJson convert every field', () {
+      final Map<String, dynamic> json = <String, dynamic>{
+        'id': 'json-film',
+        'title': 'JSON Film',
+        'ageRating': '12A',
+        'synopsis': 'A film described in JSON.',
+        'screeningTime': 'Sunday 16:30',
+        'imagePath': 'assets/images/json.jpeg',
+        'price': 8.25,
+      };
+
+      final Movie movie = Movie.fromJson(json);
+
+      expect(movie.id, 'json-film');
+      expect(movie.title, 'JSON Film');
+      expect(movie.ageRating, '12A');
+      expect(movie.synopsis, 'A film described in JSON.');
+      expect(movie.screeningTime, 'Sunday 16:30');
+      expect(movie.imagePath, 'assets/images/json.jpeg');
+      expect(movie.price, 8.25);
+      expect(movie.toJson(), json);
+    });
+
+    test('fromJson converts a whole-number price to a double', () {
+      final Map<String, dynamic> json = <String, dynamic>{
+        'id': 'whole-price',
+        'title': 'Whole Price Film',
+        'ageRating': 'U',
+        'synopsis': 'Costs a whole number of pounds.',
+        'screeningTime': 'Monday 14:00',
+        'imagePath': 'assets/images/whole.jpeg',
+        'price': 8,
+      };
+
+      final Movie movie = Movie.fromJson(json);
+
+      expect(movie.price, isA<double>());
+      expect(movie.price, 8.0);
+    });
   });
 }
