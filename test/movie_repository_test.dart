@@ -3,6 +3,7 @@ import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/repositories/movie_repository.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
   group('MovieRepository tests', () {
     test('getMovies returns at least two valid movies', () {
       final repository = MovieRepository();
@@ -58,6 +59,35 @@ void main() {
       for (final movie in movies) {
         expect(movie.price, lessThan(8.00));
       }
+    });
+
+    test('loadMoviesFromAsset reads every film from the bundled JSON',
+        () async {
+      final repository = MovieRepository();
+
+      final List<Movie> movies = await repository.loadMoviesFromAsset();
+
+      expect(movies.length, 2);
+      expect(movies[0].id, '1');
+      expect(movies[0].title, 'Dune Part II');
+      expect(movies[0].ageRating, 'PG');
+      expect(movies[0].screeningTime, 'Friday 9 OCT 18:00');
+      expect(movies[0].imagePath, 'assets/images/Dune2.jpeg');
+      expect(movies[0].price, 7.5);
+      expect(movies[1].id, '2');
+      expect(movies[1].title, 'Interstellar');
+      expect(repository.getMovies(), movies);
+    });
+
+    test('loadMoviesFromAsset throws when the asset does not exist', () async {
+      final repository = MovieRepository();
+
+      expect(
+        () => repository.loadMoviesFromAsset(
+          assetPath: 'assets/data/missing.json',
+        ),
+        throwsA(anything),
+      );
     });
   });
 }
