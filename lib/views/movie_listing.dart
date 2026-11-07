@@ -41,9 +41,6 @@ class _MovieListingState extends State<MovieListing> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(appTitle),
-        backgroundColor: cinemaSurface,
-        iconTheme: const IconThemeData(color: cinemaBrand),
-        elevation: 0,
       ),
       drawer: const NavDrawer(),
       body: SingleChildScrollView(
