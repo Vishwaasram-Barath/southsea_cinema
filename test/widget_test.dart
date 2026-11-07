@@ -5,8 +5,12 @@ import 'package:southsea_cinema/main.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
 import 'package:southsea_cinema/views/basket_view.dart';
 import 'package:southsea_cinema/views/settings_view.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  setUp((){
+    rootBundle.clear();
+  });
   testWidgets('Home page displays movies and booking buttons',
       (WidgetTester tester) async {
     await tester.pumpWidget(const SouthseaCinemaApp());
