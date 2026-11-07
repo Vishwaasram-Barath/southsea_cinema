@@ -45,7 +45,7 @@ class MovieRepository {
     return null;
   }
 
-    Future<List<Movie>> loadMoviesFromAsset({
+  Future<List<Movie>> loadMoviesFromAsset({
     String assetPath = 'assets/data/movies.json',
   }) async {
     final String jsonString = await rootBundle.loadString(assetPath);
