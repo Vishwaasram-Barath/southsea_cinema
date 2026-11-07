@@ -15,9 +15,6 @@ Future<void> bookTickets(WidgetTester tester, String quantity) async {
 
   await tester.tap(find.text('ADD TO ORDER'));
   await tester.pump();
-
-  await tester.pageBack();
-  await tester.pumpAndSettle();
 }
 
 Future<void> openBasket(WidgetTester tester) async {
