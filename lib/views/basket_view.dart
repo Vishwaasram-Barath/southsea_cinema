@@ -118,7 +118,7 @@ class _BasketViewState extends State<BasketView> {
 
     children.add(const SizedBox(height: 24));
     children.add(
-      _buildTotalRow('Tickets', '${basket.getTotalTickets()}'),
+      _buildTotalRow('Tickets', '${basket.getNumberOfTickets()}'),
     );
     children.add(
       _buildTotalRow(

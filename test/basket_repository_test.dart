@@ -33,7 +33,7 @@ void main() {
       final BasketRepository basket = BasketRepository.instance;
 
       expect(basket.getItems(), isEmpty);
-      expect(basket.getTotalTickets(), 0);
+      expect(basket.getNumberOfTickets(), 0);
       expect(basket.getTotal(), 0.0);
     });
 
@@ -44,7 +44,7 @@ void main() {
       basket.addItem(const BasketItem(movie: testMovie2, quantity: 1));
 
       expect(basket.getItems().length, 2);
-      expect(basket.getTotalTickets(), 3);
+      expect(basket.getNumberOfTickets(), 3);
       expect(basket.getTotal(), 26.0);
     });
 
@@ -67,7 +67,7 @@ void main() {
       basket.clear();
 
       expect(basket.getItems(), isEmpty);
-      expect(basket.getTotalTickets(), 0);
+      expect(basket.getNumberOfTickets(), 0);
     });
 
     test('getItems returns an unmodifiable list', () {

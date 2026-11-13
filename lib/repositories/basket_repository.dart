@@ -25,7 +25,7 @@ class BasketRepository {
     _items.clear();
   }
 
-  int getTotalTickets() {
+  int getNumberOfTickets() {
     int total = 0;
     for (final BasketItem item in _items) {
       total += item.quantity;
